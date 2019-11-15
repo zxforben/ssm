@@ -8,8 +8,8 @@
 		INSERT ignore INTO appointment (book_id, student_id)
 		VALUES (#{bookId}, #{studentId})
 	</insert>
-	
-	<select id="queryByKeyWithBook" resultType="Appointment">
+
+    <select id="queryByKeyWithBook" resultType="AppointmentDto">
 		<!-- 如何告诉MyBatis把结果映射到Appointment同时映射book属性 -->
 		<!-- 可以自由控制SQL -->
 		SELECT

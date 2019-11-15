@@ -1,6 +1,5 @@
 package com.soecode.fzc.dto;
 
-import com.soecode.fzc.entity.Appointment;
 import com.soecode.fzc.enums.AppointStateEnum;
 
 /**
@@ -18,7 +17,7 @@ public class AppointExecution {
 	private String stateInfo;
 
 	// 预约成功对象
-	private Appointment appointment;
+	private AppointmentDto appointment;
 
 	public AppointExecution() {
 	}
@@ -31,7 +30,7 @@ public class AppointExecution {
 	}
 
 	// 预约成功的构造器
-	public AppointExecution(long bookId, AppointStateEnum stateEnum, Appointment appointment) {
+	public AppointExecution(long bookId, AppointStateEnum stateEnum, AppointmentDto appointment) {
 		this.bookId = bookId;
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo();
@@ -62,11 +61,11 @@ public class AppointExecution {
 		this.stateInfo = stateInfo;
 	}
 
-	public Appointment getAppointment() {
+	public AppointmentDto getAppointment() {
 		return appointment;
 	}
 
-	public void setAppointment(Appointment appointment) {
+	public void setAppointment(AppointmentDto appointment) {
 		this.appointment = appointment;
 	}
 

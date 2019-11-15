@@ -1,6 +1,6 @@
 package com.soecode.fzc.dao;
 
-import com.soecode.fzc.entity.Appointment;
+import com.soecode.fzc.dto.AppointmentDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface AppointmentDao {
@@ -21,6 +21,6 @@ public interface AppointmentDao {
 	 * @param studentId
 	 * @return
 	 */
-	Appointment queryByKeyWithBook(@Param("bookId") long bookId, @Param("studentId") long studentId);
+	AppointmentDto queryByKeyWithBook(@Param("bookId") long bookId, @Param("studentId") long studentId);
 
 }

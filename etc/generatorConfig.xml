@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- See: http://www.mybatis.org/generator/configreference/commentGenerator.html -->
+    <properties resource="generator.properties"/>
+    <!-- <classPathEntry location="../hsqldb/hsqldb-2.3.5.jar" /> -->
+    <context id="contextId" targetRuntime="MyBatis3">
+        <!-- 考虑需要兼容DB2与ORCAL数据库, 大部份字段不需要加双引号，autoDelimitKeywords设置为false -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <!--        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.connectionURL}" userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.soecode.fzc.entity" targetProject="../src/main/java">
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.soecode.fzc.entity.BaseEntity"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.soecode.fzc.dao" targetProject="../src/main/resources">
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.soecode.fzc.dao" targetProject="../src/main/java">
+            <property name="rootInterface" value="com.soecode.fzc.MyMapper"/>
+        </javaClientGenerator>
+
+        <table tableName="appointment" domainObjectName="Appointment">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+
+        <table tableName="book" domainObjectName="Book">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -3,7 +3,7 @@ package com.soecode.fzc.service.impl;
 import com.soecode.fzc.dao.AppointmentDao;
 import com.soecode.fzc.dao.BookDao;
 import com.soecode.fzc.dto.AppointExecution;
-import com.soecode.fzc.entity.Appointment;
+import com.soecode.fzc.dto.AppointmentDto;
 import com.soecode.fzc.entity.Book;
 import com.soecode.fzc.enums.AppointStateEnum;
 import com.soecode.fzc.exception.AppointException;
@@ -60,7 +60,7 @@ public class BookServiceImpl implements BookService {
 				if (insert <= 0) {// 重复预约
 					throw new RepeatAppointException("repeat appoint");
 				} else {// 预约成功
-					Appointment appointment = appointmentDao.queryByKeyWithBook(bookId, studentId);
+					AppointmentDto appointment = appointmentDao.queryByKeyWithBook(bookId, studentId);
 					return new AppointExecution(bookId, AppointStateEnum.SUCCESS, appointment);
 				}
 			}
